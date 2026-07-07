@@ -41,10 +41,7 @@ p { color: var(--text-70); }
 .mini-row span { color: var(--text-40); }
 code { color: var(--text-70); font-family: 'Courier New','Monaco','Consolas',monospace; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; display: block; }
 em { color: var(--text-55); font-style: normal; }
-.notes { margin-top: 10px; }
-textarea { width: 100%; min-height: 130px; resize: vertical; background: #000; color: var(--text-70); border: 1px solid var(--border); padding: 12px; font-family: 'Courier New','Monaco','Consolas',monospace; font-size: 13px; line-height: 1.5; outline: none; -webkit-text-stroke: 0.2px currentColor; }
-textarea::placeholder { color: var(--text-40); }
-textarea:focus { border-color: rgba(255,255,255,0.22); }
+.config-panel { display: grid; gap: 8px; }
 footer { max-width: 1200px; margin: 0 auto; border-top: 1px solid var(--border); padding: 18px 20px 26px; color: var(--text-40); font-size: 12px; }
 footer .sep { margin: 0 10px; color: rgba(255,255,255,0.2); }
 @media (max-width: 900px) { .columns { grid-template-columns: 1fr; } .header-inner { align-items: flex-start; gap: 10px; flex-direction: column; } }
