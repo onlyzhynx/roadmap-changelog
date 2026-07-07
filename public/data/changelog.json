@@ -1,0 +1,1143 @@
+{
+  "generatedAt": "2026-07-07T18:27:45.264Z",
+  "repos": [
+    "leyten/shard",
+    "leyten/c0mpute"
+  ],
+  "data": {
+    "leyten/shard": [
+      {
+        "id": "leyten-shard-3e893e8",
+        "repo": "leyten/shard",
+        "sha": "3e893e8",
+        "url": "https://github.com/leyten/shard/commit/3e893e865bd65786d9c2c398fd5940a0b8d5d150",
+        "title": "Verified weight-fetch deploy path (range fetch + puller) (#45)",
+        "tldr": "Verified weight-fetch deploy path (range fetch + puller) (#45). 3 files changed, +111/-16.",
+        "plainEnglish": "The scattered deploy pulls each stage's block with a raw, UNVERIFIED snapshot_download (m25_pull_range). Route it through the content-addressed manifest instead so every byte is re-hashed against a signed manifest before it touches disk — a malicious mirror or peer physically cannot feed corrupt weights (sha256 won't match, load fails closed).",
+        "whyItMatters": "Looks related to Protocol → Signed receipts.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Ever-bigger models",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "3e893e8 · leyten · 2026-07-07T17:33:45Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "3 files changed, +111/-16"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "phase0/m25_pull_verified.py",
+            "lines": "L1-L50",
+            "note": "Changed +50/-0. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "shard/fetch.py",
+            "lines": "L219-L243",
+            "note": "Changed +25/-15. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "tests/test_fetch.py",
+            "lines": "L26-L32",
+            "note": "Changed +36/-1. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:48.997Z"
+      },
+      {
+        "id": "leyten-shard-0d2a92c",
+        "repo": "leyten/shard",
+        "sha": "0d2a92c",
+        "url": "https://github.com/leyten/shard/commit/0d2a92ccc67b0e5023699b0f7d9e2e7776110398",
+        "title": "Test the manifest publisher (generate <-> verify round-trip) (#44)",
+        "tldr": "Test the manifest publisher (generate <-> verify round-trip) (#44). 2 files changed, +112/-3.",
+        "plainEnglish": "* test(manifest): cover the publisher, generate<->verify round-trip",
+        "whyItMatters": "Looks related to Network → One-command swarm join.",
+        "roadmap": [
+          {
+            "lane": "Network",
+            "item": "One-command swarm join",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "0d2a92c · leyten · 2026-07-07T17:17:31Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +112/-3"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L49-L60",
+            "note": "Changed +6/-3. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "tests/test_publish_manifest.py",
+            "lines": "L1-L106",
+            "note": "Changed +106/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:48.998Z"
+      },
+      {
+        "id": "leyten-shard-13634f6",
+        "repo": "leyten/shard",
+        "sha": "13634f6",
+        "url": "https://github.com/leyten/shard/commit/13634f67c418827a087f3303c206ec867eb4a9dc",
+        "title": "Test the compute-honesty spot-check (challenge.py); defer endpoint bindings (#43)",
+        "tldr": "Test the compute-honesty spot-check (challenge.py); defer endpoint bindings (#43). 2 files changed, +158/-4.",
+        "plainEnglish": "* test(challenge): adversarial coverage for the compute-honesty spot-check",
+        "whyItMatters": "Looks related to Protocol → Signed receipts.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Network",
+            "item": "Per-GPU identity and pay",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "13634f6 · leyten · 2026-07-07T17:11:48Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +158/-4"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L37-L54",
+            "note": "Changed +12/-4. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "tests/test_challenge.py",
+            "lines": "L1-L146",
+            "note": "Changed +146/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:48.998Z"
+      },
+      {
+        "id": "leyten-shard-b3f9916",
+        "repo": "leyten/shard",
+        "sha": "b3f9916",
+        "url": "https://github.com/leyten/shard/commit/b3f9916dd2a8605dd4d1692ab5e2ea921f6d8943",
+        "title": "docs: tidy the 2026-07-07 session log (#42)",
+        "tldr": "docs: tidy the 2026-07-07 session log (#42). 2 files changed, +32/-36.",
+        "plainEnglish": "Rewrite the session entry + validation receipt in the normal work-log voice (drop the process narration). Content unchanged: the 7 merged hardening PRs (#34-40), the live 5-stage-ring validation of the receipt chain + churn, the FWD_RET tunnel-establish lesson, and the remaining bigger-tier work.",
+        "whyItMatters": "Looks related to Protocol → Betanet PoC.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Network",
+            "item": "Self-managing swarms",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "b3f9916 · leyten · 2026-07-07T17:00:19Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +32/-36"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L13-L54",
+            "note": "Changed +31/-35. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "docs/receipts/m25-warmring-validation-20260707.md",
+            "lines": "L1-L7",
+            "note": "Changed +1/-1. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:48.999Z"
+      },
+      {
+        "id": "leyten-shard-e6316db",
+        "repo": "leyten/shard",
+        "sha": "e6316db",
+        "url": "https://github.com/leyten/shard/commit/e6316dbb390e8c0a535573808d64a270125b83cd",
+        "title": "Finalize 2026-07-07 autonomous session living state (#41)",
+        "tldr": "Finalize 2026-07-07 autonomous session living state (#41). 1 files changed, +22/-9.",
+        "plainEnglish": "Record #38/#40 in the session summary, mark the safe CPU-testable hardening backlog drained (176 tests green), and reframe NEXT: the remaining work is a bigger tier needing a strategy call — endpoint receipt bindings need a trust-model decision first (the naive token binding is weak), weight-fetch deploy-wiring needs a signed M2.5 manifest, FWD_RET is a libp2p infra change, and the real remaining project is the c0mpute permissionless loop. This is why the autonomous loop stopped here rather than barrelling into moat-critical or ring-dependent work unsupervised.",
+        "whyItMatters": "Looks related to Protocol → Betanet PoC.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Network",
+            "item": "Self-managing swarms",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "e6316db · leyten · 2026-07-07T13:48:33Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "1 files changed, +22/-9"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L13-L30",
+            "note": "Changed +22/-9. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:48.999Z"
+      },
+      {
+        "id": "leyten-shard-b442493",
+        "repo": "leyten/shard",
+        "sha": "b442493",
+        "url": "https://github.com/leyten/shard/commit/b4424934390e1a0d3224d64266e5a9a56113e1d6",
+        "title": "Adversarial tests for the verified weight-fetch trust root (#40)",
+        "tldr": "Adversarial tests for the verified weight-fetch trust root (#40). 2 files changed, +240/-2.",
+        "plainEnglish": "14 CPU tests for shard/fetch.py + manifest.py: tampered/size/CID reject+delete, path-traversal refused, bad-sig/wrong-pin/unsigned manifest rejected, selectivity, cache re-hash. Test-only; 176 green. Advances TIER 2.4.",
+        "whyItMatters": "Looks related to Protocol → Betanet PoC.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Ever-bigger models",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "b442493 · leyten · 2026-07-07T13:46:19Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +240/-2"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L549-L559",
+            "note": "Changed +5/-2. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "tests/test_fetch.py",
+            "lines": "L1-L235",
+            "note": "Changed +235/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:48.999Z"
+      },
+      {
+        "id": "leyten-shard-b1a21b9",
+        "repo": "leyten/shard",
+        "sha": "b1a21b9",
+        "url": "https://github.com/leyten/shard/commit/b1a21b95434f70f78e285499e2b79fa3b7b7e055",
+        "title": "Warm-ring validation: receipt moat + churn proven live (#39)",
+        "tldr": "Warm-ring validation: receipt moat + churn proven live (#39). 2 files changed, +108/-14.",
+        "plainEnglish": "Live 5-stage EU ring validated the receipt chain binding (out_root[i]==in_root[i+1] across all stages, PROVE ALL valid) and churn (coord killed mid-decode, new coord completes, no re-warm). Receipt banked; ring torn down. ~$3-4.",
+        "whyItMatters": "Looks related to Protocol → Betanet PoC.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Network",
+            "item": "Self-managing swarms",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "b1a21b9 · leyten · 2026-07-07T13:36:23Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +108/-14"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L13-L45",
+            "note": "Changed +29/-14. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "docs/receipts/m25-warmring-validation-20260707.md",
+            "lines": "L1-L79",
+            "note": "Changed +79/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:49.000Z"
+      },
+      {
+        "id": "leyten-shard-95039d9",
+        "repo": "leyten/shard",
+        "sha": "95039d9",
+        "url": "https://github.com/leyten/shard/commit/95039d91259ff6c3744de747e93a45040e07f78c",
+        "title": "Bound-check batched-decode KV write (no OOB scatter crash) (#38)",
+        "tldr": "Bound-check batched-decode KV write (no OOB scatter crash) (#38). 3 files changed, +64/-7.",
+        "plainEnglish": "attn_decode_b now bound-checks the per-stream KV scatter against M25_KV_MAXLEN (clean RuntimeError, not an OOB CUDA-assert that kills the stage); mirrors the prefill guard. CPU-tested boundary; live behaviour warm-validated on the ring. 162 tests green.",
+        "whyItMatters": "Looks related to Network → Self-managing swarms.",
+        "roadmap": [
+          {
+            "lane": "Network",
+            "item": "Self-managing swarms",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "95039d9 · leyten · 2026-07-07T12:51:07Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "3 files changed, +64/-7"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L538-L557",
+            "note": "Changed +9/-6. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "phase0/m25_stage.py",
+            "lines": "L114-L130",
+            "note": "Changed +13/-1. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "tests/test_kv_bound.py",
+            "lines": "L1-L42",
+            "note": "Changed +42/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:49.000Z"
+      },
+      {
+        "id": "leyten-shard-d9d13ed",
+        "repo": "leyten/shard",
+        "sha": "d9d13ed",
+        "url": "https://github.com/leyten/shard/commit/d9d13ede24121989ea96208c83ccef7ca23252c2",
+        "title": "Harden gateway: client-disconnect, slow-client, reasoning=False stream (#37)",
+        "tldr": "Harden gateway: client-disconnect, slow-client, reasoning=False stream (#37). 2 files changed, +242/-17.",
+        "plainEnglish": "Client write failures raise ClientGone (not retried, no whole-gen re-run); a stream write timeout bounds a stalled client instead of pinning the ring ~30min; _split_stream is reasoning-aware so reasoning=False no longer duplicates the answer. 11 tests; suite 159 green.",
+        "whyItMatters": "Looks related to Network → Self-managing swarms.",
+        "roadmap": [
+          {
+            "lane": "Network",
+            "item": "Self-managing swarms",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Product",
+            "item": "Frontier models in chat",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "d9d13ed · leyten · 2026-07-07T12:36:37Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +242/-17"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "phase0/m25_gateway.py",
+            "lines": "L26-L45",
+            "note": "Changed +56/-17. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "tests/test_gateway_streaming.py",
+            "lines": "L1-L186",
+            "note": "Changed +186/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:49.002Z"
+      },
+      {
+        "id": "leyten-shard-7e057bc",
+        "repo": "leyten/shard",
+        "sha": "7e057bc",
+        "url": "https://github.com/leyten/shard/commit/7e057bc0d2a567d5111c0c127f701891a3e9a2ca",
+        "title": "Bind receipts to the job: freshness nonce + root chaining (#36)",
+        "tldr": "Bind receipts to the job: freshness nonce + root chaining (#36). 4 files changed, +206/-24.",
+        "plainEnglish": "Per-job random nonce on the reset frame, signed into every stage's receipt (verify_coverage rejects a stale/replayed nonce), plus out_root==in_root chain binding (check_chain, lossless wire only) catching fabricated/spliced roots. Coordinator-trusted-challenge threat model; interior edges bound, endpoints noted as follow-ups. 13 tests; suite 148 green.",
+        "whyItMatters": "Looks related to Protocol → Signed receipts.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Betanet PoC",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Trustless verification",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/shard"
+          },
+          {
+            "label": "Commit",
+            "detail": "7e057bc · leyten · 2026-07-07T12:16:10Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "4 files changed, +206/-24"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "docs/M25_ENGINE.md",
+            "lines": "L13-L31",
+            "note": "Changed +24/-2. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "phase0/m25_pipe.py",
+            "lines": "L250-L263",
+            "note": "Changed +25/-11. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "shard/receipt.py",
+            "lines": "L60-L72",
+            "note": "Changed +28/-11. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "tests/test_receipt_binding.py",
+            "lines": "L1-L129",
+            "note": "Changed +129/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:49.003Z"
+      }
+    ],
+    "leyten/c0mpute": [
+      {
+        "id": "leyten-c0mpute-7463db9",
+        "repo": "leyten/c0mpute",
+        "sha": "7463db9",
+        "url": "https://github.com/leyten/c0mpute/commit/7463db9e9c67f7efaf681fd38239c9e85cb8145e",
+        "title": "chat: keep the generating-image skeleton up until the async render lands",
+        "tldr": "chat: keep the generating-image skeleton up until the async render lands. 1 files changed, +16/-3.",
+        "plainEnglish": "With async rendering the model's text turn (job:complete) finishes before the image, so job:complete was clearing the 'generating image…' skeleton ~1s in, then the image popped in later with no progress indicator between. Track an awaitingImageRef from job:generating_image until job:image / job:image_error; job:complete no longer clears the skeleton while a render is in flight. Reset on send and hard job error; 200s safety net.",
+        "whyItMatters": "Looks related to Product → Frontier models in chat.",
+        "roadmap": [
+          {
+            "lane": "Product",
+            "item": "Frontier models in chat",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "7463db9 · leyten · 2026-06-23T22:42:35Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "1 files changed, +16/-3"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "app/chat/page.tsx",
+            "lines": "L453-L462",
+            "note": "Changed +16/-3. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.607Z"
+      },
+      {
+        "id": "leyten-c0mpute-74e5f3d",
+        "repo": "leyten/c0mpute",
+        "sha": "74e5f3d",
+        "url": "https://github.com/leyten/c0mpute/commit/74e5f3db3bf282aa7c0cade799eb894694c2b1f6",
+        "title": "chat: render generate_image async so the worker never times out waiting",
+        "tldr": "chat: render generate_image async so the worker never times out waiting. 5 files changed, +140/-28.",
+        "plainEnglish": "generate_image used to block the worker's tool-result wait on the full GPU render; a cold/queued render exceeded the worker's 30s ceiling and surfaced 'Tool execution timed out'. The model never uses the rendered image (the tool result is text), so the tool now does its sync work (safety + credit spend + workflow build) and returns a PendingImage; the orchestrator sends the tool result immediately and fires the render async, delivering job:image to the user when it lands or refunding + emitting job:image_error on failure. Frontend attaches a late image to its saved assistant message by job_id (retroactive), or buffers it for job:complete if it arrives first; new job:image_error handler shows",
+        "whyItMatters": "Looks related to Product → Bigger uncensored models.",
+        "roadmap": [
+          {
+            "lane": "Product",
+            "item": "Bigger uncensored models",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Product",
+            "item": "Frontier models in chat",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "74e5f3d · leyten · 2026-06-23T22:36:59Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "5 files changed, +140/-28"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "app/chat/page.tsx",
+            "lines": "L411-L423",
+            "note": "Changed +42/-6. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "hooks/useSocket.ts",
+            "lines": "L32-L38",
+            "note": "Changed +9/-0. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/orchestrator/orchestrator.ts",
+            "lines": "L740-L746",
+            "note": "Changed +30/-4. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/orchestrator/tools.ts",
+            "lines": "L35-L57",
+            "note": "Changed +58/-18. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/orchestrator/types.ts",
+            "lines": "L116-L122",
+            "note": "Changed +1/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.608Z"
+      },
+      {
+        "id": "leyten-c0mpute-b23a5a7",
+        "repo": "leyten/c0mpute",
+        "sha": "b23a5a7",
+        "url": "https://github.com/leyten/c0mpute/commit/b23a5a7d2d34ce190268f4a6c637bca9201e8002",
+        "title": "worker: raise tool-result wait 30s->200s so image renders don't time out",
+        "tldr": "worker: raise tool-result wait 30s->200s so image renders don't time out. 2 files changed, +8/-3.",
+        "plainEnglish": "The worker abandoned the tool-result wait after 30s, but the orchestrator gives image renders up to 180s (IMAGE_JOB_TIMEOUT_MS) and always returns a result within that window. A cold/queued image render exceeded 30s, surfacing 'Tool execution timed out (30s)' while the image was still rendering. Raise to 200s (> the orchestrator ceiling). Bump to 2.8.3.",
+        "whyItMatters": "Looks related to Product → Frontier models in chat.",
+        "roadmap": [
+          {
+            "lane": "Product",
+            "item": "Frontier models in chat",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "b23a5a7 · leyten · 2026-06-23T22:08:05Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +8/-3"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "c0mpute-worker/package.json",
+            "lines": "L1-L6",
+            "note": "Changed +1/-1. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "c0mpute-worker/src/worker.ts",
+            "lines": "L125-L139",
+            "note": "Changed +7/-2. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.608Z"
+      },
+      {
+        "id": "leyten-c0mpute-42b4d3d",
+        "repo": "leyten/c0mpute",
+        "sha": "42b4d3d",
+        "url": "https://github.com/leyten/c0mpute/commit/42b4d3db2adb98ef1694254587f3502e1aca98ed",
+        "title": "chat: never feed generated images back to the model as input",
+        "tldr": "chat: never feed generated images back to the model as input. 2 files changed, +16/-1.",
+        "plainEnglish": "Generated images are display-only output (shown inline, never stored). The chat re-sent the prior generated image into the model's context on the next turn when the tier advertised vision; the max model has no vision projector, so ollama 500'd ('image input is not supported - mmproj'). Fixed both layers: the orchestrator strips assistant-message images before dispatch (covers all clients, no rebuild), and the frontend only attaches user-uploaded images to context (assistant/generated images excluded). User-uploaded images still reach vision-capable workers.",
+        "whyItMatters": "Looks related to Protocol → Ever-bigger models.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Ever-bigger models",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Product",
+            "item": "Frontier models in chat",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "42b4d3d · leyten · 2026-06-23T21:58:52Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +16/-1"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "app/chat/page.tsx",
+            "lines": "L779-L794",
+            "note": "Changed +4/-1. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/orchestrator/orchestrator.ts",
+            "lines": "L1100-L1117",
+            "note": "Changed +12/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.609Z"
+      },
+      {
+        "id": "leyten-c0mpute-91a4a16",
+        "repo": "leyten/c0mpute",
+        "sha": "91a4a16",
+        "url": "https://github.com/leyten/c0mpute/commit/91a4a16dbc6ba9b9bc82f42adf3bf13cd595e4b1",
+        "title": "chat: faithful uncensored image-prompt translation",
+        "tldr": "chat: faithful uncensored image-prompt translation. 2 files changed, +3/-3.",
+        "plainEnglish": "The generate_image tool let the model rewrite explicit user requests into tame ones (e.g. 'lady with nice tits' -> 'elegant lady in a pastel dress'), defeating the uncensored pillar. The backend already renders faithfully (NSFW gate open, only the CSAM floor enforced) — the softening was the chat model writing a sanitized prompt arg against a neutral system prompt. Now the tool description tells it to translate the request literally without sanitizing/adding coverage, and the native system prompt states the platform is uncensored and not to water down lawful requests. CSAM hard-line still blocks regardless.",
+        "whyItMatters": "Looks related to Protocol → Signed receipts.",
+        "roadmap": [
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Product",
+            "item": "Bigger uncensored models",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Product",
+            "item": "Frontier models in chat",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "91a4a16 · leyten · 2026-06-23T21:51:18Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +3/-3"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "lib/orchestrator/orchestrator.ts",
+            "lines": "L97-L103",
+            "note": "Changed +1/-1. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/orchestrator/tools.ts",
+            "lines": "L40-L53",
+            "note": "Changed +2/-2. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.609Z"
+      },
+      {
+        "id": "leyten-c0mpute-7fcbe54",
+        "repo": "leyten/c0mpute",
+        "sha": "7fcbe54",
+        "url": "https://github.com/leyten/c0mpute/commit/7fcbe54bad9b4724e14b6b0ed3614cb78ae648e3",
+        "title": "free-subsidy: reserve worst-case worker payout at submit so the cap can't strand workers",
+        "tldr": "free-subsidy: reserve worst-case worker payout at submit so the cap can't strand workers. 1 files changed, +23/-7.",
+        "plainEnglish": "The submit gate used a bare 'paid subsidy >= cap' check while payout needs 'paid + thisJob <= cap'. Since the paid total only rises when a worker is actually paid, once spend stalled one job under the cap, submit kept admitting free prompts that payout then refused to fund — every worker serving a free job past that point earned $0 until the UTC reset (stranded 71 workers / 350 jobs on Jun 20). Now both the anon and onboarding free-prompt paths reserve the worst-case worker share at submit and reject when the daily/hourly cap can't cover it, so any admitted free job is guaranteed payable. The onboarding path keeps the user's free-prompt count instead of burning it.",
+        "whyItMatters": "Looks related to $ZERO → Trustless payouts.",
+        "roadmap": [
+          {
+            "lane": "$ZERO",
+            "item": "Trustless payouts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "$ZERO",
+            "item": "Treasury dashboard",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "7fcbe54 · leyten · 2026-06-23T19:00:05Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "1 files changed, +23/-7"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "lib/orchestrator/orchestrator.ts",
+            "lines": "L16-L22",
+            "note": "Changed +23/-7. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.610Z"
+      },
+      {
+        "id": "leyten-c0mpute-5e70cf9",
+        "repo": "leyten/c0mpute",
+        "sha": "5e70cf9",
+        "url": "https://github.com/leyten/c0mpute/commit/5e70cf9f6ebefa526c013bb4760cbbddaf1e6871",
+        "title": "staking: fix migrate/claim double-spend race",
+        "tldr": "staking: fix migrate/claim double-spend race. 2 files changed, +73/-30.",
+        "plainEnglish": "Atomically reserve (debit) the claimable reward before the on-chain migrate await and restore it on failure, so a concurrent claim can't pay the same rewards twice.",
+        "whyItMatters": "Looks related to $ZERO → Trustless payouts.",
+        "roadmap": [
+          {
+            "lane": "$ZERO",
+            "item": "Trustless payouts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "$ZERO",
+            "item": "Treasury dashboard",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "5e70cf9 · leyten · 2026-06-23T18:51:32Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +73/-30"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "app/api/staking/migrate/route.ts",
+            "lines": "L1-L6",
+            "note": "Changed +36/-30. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/staking.ts",
+            "lines": "L415-L454",
+            "note": "Changed +37/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.610Z"
+      },
+      {
+        "id": "leyten-c0mpute-35e8259",
+        "repo": "leyten/c0mpute",
+        "sha": "35e8259",
+        "url": "https://github.com/leyten/c0mpute/commit/35e8259648ce56e92aa62b4012f765d45c07cfa5",
+        "title": "keeper: add 'buyback' CLI subcommand; data-stats: fetch local origin to bypass Cloudflare",
+        "tldr": "keeper: add 'buyback' CLI subcommand; data-stats: fetch local origin to bypass Cloudflare. 2 files changed, +7/-1.",
+        "plainEnglish": "data-stats was hitting the public domain and getting Cloudflare's Under-Attack challenge HTML instead of JSON, nulling the treasury tiles on data.c0mpute.ai. Hit the local origin instead.",
+        "whyItMatters": "Looks related to $ZERO → Treasury dashboard.",
+        "roadmap": [
+          {
+            "lane": "$ZERO",
+            "item": "Treasury dashboard",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "$ZERO",
+            "item": "Trustless payouts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "35e8259 · leyten · 2026-06-23T18:51:14Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +7/-1"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "scripts/data-stats.ts",
+            "lines": "L15-L25",
+            "note": "Changed +5/-1. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "scripts/keeper.ts",
+            "lines": "L225-L232",
+            "note": "Changed +2/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.610Z"
+      },
+      {
+        "id": "leyten-c0mpute-b4ea451",
+        "repo": "leyten/c0mpute",
+        "sha": "b4ea451",
+        "url": "https://github.com/leyten/c0mpute/commit/b4ea451aa813d559584d4c79cefe89fb887ba602",
+        "title": "api: node-identity binding endpoint (shard PeerId <-> c0mpute account)",
+        "tldr": "api: node-identity binding endpoint (shard PeerId <-> c0mpute account). 2 files changed, +108/-0.",
+        "plainEnglish": "A swarm node proves it controls its libp2p PeerId by signing a server-issued, account-bound, time-limited nonce; c0mpute verifies (ed25519 inline, no new deps) and records the binding, gated by the node's cwt_ worker token. NODE_BIND_SECRET must be set in prod (env).",
+        "whyItMatters": "Looks related to Network → Per-GPU identity and pay.",
+        "roadmap": [
+          {
+            "lane": "Network",
+            "item": "Per-GPU identity and pay",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Protocol",
+            "item": "Signed receipts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Network",
+            "item": "One-command swarm join",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "b4ea451 · leyten · 2026-06-23T18:51:14Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "2 files changed, +108/-0"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "app/api/node-bind/route.ts",
+            "lines": "L1-L57",
+            "note": "Changed +57/-0. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/identity.ts",
+            "lines": "L1-L51",
+            "note": "Changed +51/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.611Z"
+      },
+      {
+        "id": "leyten-c0mpute-8423cfb",
+        "repo": "leyten/c0mpute",
+        "sha": "8423cfb",
+        "url": "https://github.com/leyten/c0mpute/commit/8423cfb69b5d219ed3597f473029152daaa8863a",
+        "title": "anti-abuse: per-account/per-IP worker caps + 48h age gate + hourly anon subsidy cap",
+        "tldr": "anti-abuse: per-account/per-IP worker caps + 48h age gate + hourly anon subsidy cap. 7 files changed, +194/-36.",
+        "plainEnglish": "Kills the fake max-worker count inflation and free-job skimming: cap concurrent workers per account and per IP, require a min account age before counting toward the public total or being assigned subsidized free jobs, and add an hourly anon free-subsidy sub-cap. Worker pages now show paid vs total jobs and live native-worker uptime.",
+        "whyItMatters": "Looks related to Network → Per-GPU identity and pay.",
+        "roadmap": [
+          {
+            "lane": "Network",
+            "item": "Per-GPU identity and pay",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "Product",
+            "item": "Frontier models in chat",
+            "movement": "Potential progress signal based on changed files and commit text."
+          },
+          {
+            "lane": "$ZERO",
+            "item": "Trustless payouts",
+            "movement": "Potential progress signal based on changed files and commit text."
+          }
+        ],
+        "evidence": [
+          {
+            "label": "Repo",
+            "detail": "leyten/c0mpute"
+          },
+          {
+            "label": "Commit",
+            "detail": "8423cfb · leyten · 2026-06-23T18:51:14Z"
+          },
+          {
+            "label": "Diff",
+            "detail": "7 files changed, +194/-36"
+          }
+        ],
+        "codeNotes": [
+          {
+            "file": "app/api/worker-stats/route.ts",
+            "lines": "L17-L23",
+            "note": "Changed +1/-1. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "app/chat/page.tsx",
+            "lines": "L853-L859",
+            "note": "Changed +2/-2. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "app/earn/page.tsx",
+            "lines": "L391-L398",
+            "note": "Changed +16/-6. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "hooks/useSocket.ts",
+            "lines": "L32-L38",
+            "note": "Changed +1/-1. Review this file for the concrete implementation detail."
+          },
+          {
+            "file": "lib/db.ts",
+            "lines": "L659-L697",
+            "note": "Changed +52/-0. Review this file for the concrete implementation detail."
+          }
+        ],
+        "nextMilestone": "Add a verified run, benchmark, receipt, or product route that shows this change live.",
+        "confidence": "medium",
+        "score": 3,
+        "createdAt": "2026-07-07T18:27:52.612Z"
+      }
+    ]
+  }
+}

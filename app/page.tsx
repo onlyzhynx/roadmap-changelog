@@ -1,3 +1,5 @@
+import { readFile } from 'node:fs/promises';
+import path from 'node:path';
 import { analyzeCommit } from '@/lib/analyzer';
 import { changelogItems } from '@/lib/changelog';
 import { fetchLatestCommitPackets } from '@/lib/github';
@@ -13,15 +15,20 @@ type DisplayItem = {
   proof: string;
   next: string;
 };
+type GeneratedCard = Awaited<ReturnType<typeof analyzeCommit>>;
+type GeneratedFile = {
+  generatedAt: string;
+  data: Record<string, GeneratedCard[]>;
+};
 
 export const dynamic = 'force-dynamic';
-export const revalidate = 0;
+export const revalidate = 3600;
 
 function fallbackItems(repo: Repo) {
   return changelogItems.filter((item) => item.repo === repo);
 }
 
-function cardToDisplay(card: Awaited<ReturnType<typeof analyzeCommit>>): DisplayItem {
+function cardToDisplay(card: GeneratedCard): DisplayItem {
   const roadmap = card.roadmap?.map((r) => `${r.lane} · ${r.item}`).join(' · ') || 'roadmap impact';
   const proof = card.codeNotes?.slice(0, 3).map((n) => `${n.file}${n.lines ? `:${n.lines}` : ''}`).join(' · ')
     || card.evidence?.map((e) => e.detail).join(' · ')
@@ -39,9 +46,21 @@ function cardToDisplay(card: Awaited<ReturnType<typeof analyzeCommit>>): Display
   };
 }
 
-async function getRepoItems(repo: Repo): Promise<DisplayItem[]> {
+async function readGenerated(): Promise<GeneratedFile | null> {
   try {
-    const packets = await fetchLatestCommitPackets({ repo, limit: 3 });
+    const file = await readFile(path.join(process.cwd(), 'public', 'data', 'changelog.json'), 'utf8');
+    return JSON.parse(file) as GeneratedFile;
+  } catch {
+    return null;
+  }
+}
+
+async function getRepoItems(repo: Repo, generated: GeneratedFile | null): Promise<DisplayItem[]> {
+  const cached = generated?.data?.[repo];
+  if (cached?.length) return cached.map(cardToDisplay);
+
+  try {
+    const packets = await fetchLatestCommitPackets({ repo, limit: 10 });
     const cards = await Promise.all(packets.map((packet) => analyzeCommit(packet)));
     return cards.map(cardToDisplay);
   } catch (error) {
@@ -78,9 +97,10 @@ function RepoColumn({ repo, items }: { repo: Repo; items: DisplayItem[] }) {
 }
 
 export default async function Home() {
+  const generated = await readGenerated();
   const [shardItems, c0mputeItems] = await Promise.all([
-    getRepoItems('leyten/shard'),
-    getRepoItems('leyten/c0mpute'),
+    getRepoItems('leyten/shard', generated),
+    getRepoItems('leyten/c0mpute', generated),
   ]);
 
   return (
@@ -96,6 +116,7 @@ export default async function Home() {
         <div className="hero-stat">
           <div className="hero-num pixel">changelog</div>
           <div className="hero-label">latest repo work, dumbed down. what changed, what it affects, what to watch.</div>
+          {generated?.generatedAt ? <div className="hero-label">updated {generated.generatedAt}</div> : null}
         </div>
 
         <div className="columns">
@@ -114,7 +135,7 @@ export default async function Home() {
       </main>
 
       <footer>
-        roadmap changelog <span className="sep">·</span> fetching latest github commits live <span className="sep">·</span> openai-compatible
+        roadmap changelog <span className="sep">·</span> github action refreshes hourly <span className="sep">·</span> openai-compatible
       </footer>
     </>
   );

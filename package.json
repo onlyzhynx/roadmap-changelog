@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
-    "analyze": "tsx scripts/analyze.ts"
+    "analyze": "tsx scripts/analyze.ts",
+    "generate": "tsx scripts/generate-changelog.ts"
   },
   "dependencies": {
     "@octokit/rest": "^22.0.0",
