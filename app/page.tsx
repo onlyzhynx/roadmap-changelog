@@ -124,18 +124,10 @@ export default async function Home() {
           <RepoColumn repo="leyten/c0mpute" items={c0mputeItems} />
         </div>
 
-        <section>
-          <div className="section-title pixel">model config</div>
-          <div className="panel config-panel">
-            <code>OPENAI_BASE_URL=https://api.c0mpute.ai/v1</code>
-            <code>OPENAI_API_KEY=...</code>
-            <code>OPENAI_MODEL=any-openai-compatible-model</code>
-          </div>
-        </section>
       </main>
 
       <footer>
-        roadmap changelog <span className="sep">·</span> github action refreshes hourly <span className="sep">·</span> openai-compatible
+        roadmap changelog <span className="sep">·</span> powered by c0mpute ai workers
       </footer>
     </>
   );
