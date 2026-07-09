@@ -10,7 +10,7 @@ type DisplayItem = {
   sha: string;
   url: string;
   title: string;
-  dumb: string;
+  simplified: string;
   affects: string;
   proof: string;
   next: string;
@@ -39,7 +39,7 @@ function cardToDisplay(card: GeneratedCard): DisplayItem {
     sha: card.sha,
     url: card.url,
     title: card.title.toLowerCase(),
-    dumb: (card.tldr || card.plainEnglish || card.whyItMatters).toLowerCase(),
+    simplified: (card.tldr || card.plainEnglish || card.whyItMatters).toLowerCase(),
     affects: roadmap.toLowerCase(),
     proof,
     next: card.nextMilestone.toLowerCase(),
@@ -77,7 +77,7 @@ function CommitItem({ item }: { item: DisplayItem }) {
         <span>{item.affects}</span>
       </div>
       <div className="commit-title pixel">{item.title}</div>
-      <p>{item.dumb}</p>
+      <p>{item.simplified}</p>
       <div className="mini-row"><span>proof</span><code>{item.proof}</code></div>
       <div className="mini-row"><span>next</span><em>{item.next}</em></div>
     </div>
@@ -115,7 +115,7 @@ export default async function Home() {
       <main>
         <div className="hero-stat">
           <div className="hero-num pixel">changelog</div>
-          <div className="hero-label">latest repo work, dumbed down. what changed, what it affects, what to watch.</div>
+          <div className="hero-label">latest repo work, simplified. what changed, what it affects, what to watch.</div>
           {generated?.generatedAt ? <div className="hero-label">updated {generated.generatedAt}</div> : null}
         </div>
 
